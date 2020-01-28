@@ -7,7 +7,7 @@ pwd
 ls -hal
 
 terraform init
-terraform validate
+# terraform validate
 
 echo "HERE"
 
