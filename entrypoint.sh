@@ -1,6 +1,7 @@
 #!/bin/sh
 
-cd ${INPUT_WORKING-DIRECTORY}
+env
+cd ${1}
 pwd
 ls -hal
 
