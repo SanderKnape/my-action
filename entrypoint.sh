@@ -1,8 +1,8 @@
 #!/bin/sh
 
 env
-echo "1: ${1}"
-cd ${1}
+echo "1: ${INPUT_WORKING-DIRECTORY}"
+cd ${INPUT_WORKING-DIRECTORY}
 pwd
 ls -hal
 
