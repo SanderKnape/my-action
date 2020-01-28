@@ -1,5 +1,10 @@
-name: 'curl'
-description: 'Performs a curl request on the given URL'
+name: 'terraform-validate'
+description: 'Validates Terraform'
+inputs:
+  working-directory:
+    description: 'Directory containing the Terraform configuration'
+    required: true
+    default: 'terraform'
 runs:
   using: 'docker'
   image: 'Dockerfile'
