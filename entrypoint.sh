@@ -1,5 +1,5 @@
 #!/bin/sh
 
-echo "Sending CURL request to ${1}"
-
-curl "${1}"
+terraform init
+terraform validate
+terraform plan

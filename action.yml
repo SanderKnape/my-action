@@ -1,9 +1,5 @@
 name: 'curl'
 description: 'Performs a curl request on the given URL'
-inputs:
-  url:
-    description: 'The URL to curl'
-    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
