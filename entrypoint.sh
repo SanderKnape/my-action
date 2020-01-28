@@ -9,17 +9,21 @@ ls -hal
 terraform init
 terraform validate
 
+echo "HERE"
+
 data="#### \`terraform plan\` ${planCommentStatus}
 <details><summary>Show Output</summary>
 {
-    "some": {
-        "json": true
+    \"some\": {
+        \"json\": true
     },
-    "even": ["more"]
+    \"even\": [\"more\"]
 }
 </details>
 Some more text"
 
 planCommentsURL=$(cat ${GITHUB_EVENT_PATH} | jq -r .pull_request.comments_url)
 echo "${data}"
+echo "${planCommentsURL}"
+
 echo "${data}" | curl -s -S -H "Authorization: token ${GITHUB_TOKEN}" --header "Content-Type: application/json" --data @- "${planCommentsURL}"
