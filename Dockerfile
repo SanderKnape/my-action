@@ -1,12 +1,12 @@
-FROM alpine:3.11
+FROM debian:buster
 
-ENV TERRAFORM_VERSION=0.12.20
+RUN apt-get update && \
+    apt-get install -y curl wget && \
+    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+    apt-get install -y nodejs && \
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    bash -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' && \
+    apt-get update && \
+    apt-get install -y google-chrome-stable --no-install-recommends
 
-RUN apk add ca-certificates curl jq && \
-    wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
-    unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/bin && \
-    rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-
-COPY entrypoint.sh /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./node_modules/.bin/wdio", "wdio.conf.js"]
