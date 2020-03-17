@@ -1,12 +1,19 @@
-name: 'terraform-validate'
-description: 'Validates Terraform'
+name: 'docker-tag-push'
+description: 'Tags the pipeline build and pushes it to ECR'
 inputs:
-  working-directory:
-    description: 'Directory containing the Terraform configuration'
+  aws-access-key-id:
+    description: 'AWS Access Key ID'
     required: true
-    default: 'terraform'
+  aws-secret-access-key:
+    description: 'AWS Secret Access Key'
+    required: true
+  github-ref:
+    description: 'GitHub Reference'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-  - ${{ inputs.working-directory }}
+  - ${{ inputs.aws-access-key-id }}
+  - ${{ inputs.aws-secret-access-key }}
+  - ${{ inputs.github-ref }}
