@@ -1,14 +1,14 @@
 name: 'docker-tag-push'
 description: 'Tags the pipeline build and pushes it to ECR'
 inputs:
+  app:
+    description: 'Application name'
+    required: true
   aws-access-key-id:
     description: 'AWS Access Key ID'
     required: true
   aws-secret-access-key:
     description: 'AWS Secret Access Key'
-    required: true
-  github-ref:
-    description: 'GitHub Reference'
     required: true
   docker-repo-url:
     description: 'Docker Repo to push to'
@@ -19,5 +19,4 @@ runs:
   args:
   - ${{ inputs.aws-access-key-id }}
   - ${{ inputs.aws-secret-access-key }}
-  - ${{ inputs.github-ref }}
   - ${{ inputs.docker-repo-url }}
