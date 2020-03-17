@@ -11,3 +11,5 @@ fi
 
 export IMAGE="${DOCKER_REPO_URL}/${APP}:${TAG_PREFIX}-${TAG}"
 docker tag ${APP} ${IMAGE}
+
+echo "tagged: ${APP} as ${IMAGE}"
